@@ -1,0 +1,41 @@
+{
+    "logged_in_user":{
+        "username": "testuser",
+        "email": "admin@mailinator.com",
+        "role_name": "admin"
+    },
+    "available_links":[
+        {
+            "method": "GET",
+            "url": "/settings/permissions",
+            "label": "Permissions",
+            "permission": "permissions:index"
+        
+        },
+        {
+            "method": "GET",
+            "url": "/settings/roles",
+            "label": "Roles",
+            "permission": "roles:index"
+        },
+        {
+            "method": "GET",
+            "url": "/settings/users",
+            "label": "Users",
+            "permission": "users:index"
+        },
+        {
+            "method": "GET",
+            "url": "/dashboard",
+            "label": "Dashboard",
+            "permission": "dashboard:index"
+        },
+        {
+            "method": "GET",
+            "url": "/user",
+            "label": "Profile",
+            "permission": "user:index"
+        }
+    ]
+    
+}

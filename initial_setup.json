@@ -1,0 +1,41 @@
+{
+    "initial_setup": {
+        "default_admin_user": {
+            "username": "admin",
+            "password": "changeme",
+            "email": "admin@mailinator.com"
+        },
+        "intial_roles": [
+            {
+                "role_name": "admin",
+                "role_description": "Administrator"
+            },
+            {
+                "role_name": "manager",
+                "role_description": "Manager"
+            },
+            {
+                "role_name": "employee",
+                "role_description": "Employee"
+            }
+        ],
+        "intial_permissions": [
+            {
+                "permission_name": "all",
+                "permission_description": "All Permissions"
+            },
+            {
+                "permission_name": "read",
+                "permission_description": "Read Permissions"
+            },
+            {
+                "permission_name": "write",
+                "permission_description": "Write Permissions"
+            },
+            {
+                "permission_name": "delete",
+                "permission_description": "Delete Permissions"
+            }
+        ]
+    }
+}

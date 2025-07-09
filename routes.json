@@ -1,0 +1,263 @@
+{
+    "auth_routes": [
+        {
+            "method": "GET",
+            "url": "/",
+            "handler": "index",
+            "Description": "Index",
+            "label": "Index",
+            "permission": "index"
+        },
+        {
+            "method": "POST",
+            "url": "/login",
+            "handler": "auth/login",
+            "Description": "Login",
+            "label": "Login",
+            "permission": "auth:login"
+        },
+        {
+            "method": "POST",
+            "url": "/register",
+            "handler": "auth/register",
+            "Description": "Register",
+            "label": "Register",
+            "permission": "auth:register"
+        },
+        {
+            "method": "POST",
+            "url": "/logout",
+            "handler": "auth/logout",
+            "Description": "Logout",
+            "label": "Logout",
+            "permission": "auth:logout"
+        },
+        {
+            "method": "POST",
+            "url": "/forgot-password",
+            "handler": "auth/forgotPassword",
+            "Description": "Forgot Password",
+            "label": "Forgot Password",
+            "permission": "auth:forgotPassword"
+        },
+        {
+            "method": "POST",
+            "url": "/reset-password",
+            "handler": "auth/resetPassword",
+            "Description": "Reset Password",
+            "label": "Reset Password",
+            "permission": "auth:resetPassword"
+        },
+        {
+            "method": "POST",
+            "url": "/change-password",
+            "handler": "auth/changePassword",
+            "Description": "Change Password",
+            "label": "Change Password",
+            "permission": "auth:changePassword"
+        }
+    ],
+    "user_routes": [
+        {
+            "method": "GET",
+            "url": "/user",
+            "handler": "user/index",
+            "Description": "User Profile and Information",
+            "label": "User Profile and Information",
+            "permission": "user:index"
+        },
+        {
+            "method": "PUT",
+            "url": "/user",
+            "handler": "user/update",
+            "Description": "Update User Profile and Information",
+            "label": "Update User Profile and Information",
+            "permission": "user:update"
+        },
+        {
+            "method": "DELETE",
+            "url": "/user",
+            "handler": "user/destroy",
+            "Description": "User Destroy",
+            "label": "User Destroy",
+            "permission": "user:destroy"
+        }
+    ],
+    "dashboard": [
+        {
+            "method": "GET",
+            "url": "/dashboard",
+            "handler": "dashboard/index",
+            "Description": "Dashboard will display all the data",
+            "label": "Dashboard",
+            "permission": "dashboard:index"
+        }
+    ],
+    "settings_routes": [
+        {
+            "method": "GET",
+            "url": "/settings",
+            "handler": "settings/index",
+            "Description": "Settings",
+            "label": "Settings",
+            "content": "list all the routes and url",
+            "links_route_shown": [
+                {
+                    "method": "GET",
+                    "url": "/settings/permissions",
+                    "handler": "permissions/index",
+                    "Description": "Permissions",
+                    "label": "Permissions",
+                    "content": "list all the routes and url",
+                    "permission": "permissions:index"
+                },
+                {
+                    "method": "GET",
+                    "url": "/settings/roles",
+                    "handler": "roles/index",
+                    "Description": "Roles",
+                    "label": "Roles",
+                    "content": "list all the routes and url",
+                    "permission": "roles:index"
+                }
+            ],
+            "permission": "settings:index"
+        }
+    ],
+    "permission_routes": [
+        {
+            "method": "GET",
+            "url": "/settings/permissions",
+            "handler": "settings/permissions/index",
+            "Description": "Permissions",
+            "label": "Permissions",
+            "content": "list all the permissions",
+            "permission": "permissions:index"
+        },
+        {
+            "method": "GET",
+            "url": "/settings/permissions/:id",
+            "handler": "settings/permissions/show",
+            "Description": "Show Permission",
+            "label": "Show Permission",
+            "content": "show a single permission by ID",
+            "permission": "permissions:show"
+        },
+        {
+            "method": "POST",
+            "url": "/settings/permissions",
+            "handler": "settings/permissions/store",
+            "Description": "Store Permissions",
+            "label": "Store Permissions",
+            "content": "store a new permission",
+            "permission": "permissions:store"
+        },
+        {
+            "method": "PUT",
+            "url": "/settings/permissions/:id",
+            "handler": "settings/permissions/update",
+            "Description": "Update Permission",
+            "label": "Update Permission",
+            "content": "update a permission by ID",
+            "permission": "permissions:update"
+        },
+        {
+            "method": "DELETE",
+            "url": "/settings/permissions/:id",
+            "handler": "settings/permissions/destroy",
+            "Description": "Delete Permission",
+            "label": "Delete Permission",
+            "content": "delete a permission by ID",
+            "permission": "permissions:destroy"
+        }
+    ],
+    "roles_routes": [
+        {
+            "method": "GET",
+            "url": "/settings/roles",
+            "handler": "settings/roles/index",
+            "Description": "Roles and Permissions",
+            "label": "Roles and Permissions",
+            "content": "list all the roles and permissions",
+            "permission": "roles:index"
+        },
+        {
+            "method": "POST",
+            "url": "/settings/roles",
+            "handler": "settings/roles/store",
+            "Description": "Store Roles and Permissions",
+            "label": "Store Roles and Permissions",
+            "content": "add a new role and assign permissions using permissions id",
+            "permission": "roles:store"
+        },
+        {
+            "method": "PUT",
+            "url": "/settings/roles",
+            "handler": "settings/roles/update",
+            "Description": "Update Roles and Permissions",
+            "label": "Update Roles and Permissions",
+            "content": "update a role and assign permissions using permissions id",
+            "permission": "roles:update"
+        },
+        {
+            "method": "DELETE",
+            "url": "/settings/roles",
+            "handler": "settings/roles/destroy",
+            "Description": "Destroy Roles and Permissions",
+            "label": "Destroy Roles and Permissions",
+            "permission": "roles:destroy"
+        }
+    ],
+    "user_management_routes": [
+        {
+            "method": "GET",
+            "url": "/settings/users",
+            "handler": "settings/users/index",
+            "Description": "List all users",
+            "label": "Users",
+            "permission": "users:index"
+        },
+        {
+            "method": "GET",
+            "url": "/settings/users/:id",
+            "handler": "settings/users/show",
+            "Description": "Get a single user by ID",
+            "label": "Show User",
+            "permission": "users:show"
+        },
+        {
+            "method": "POST",
+            "url": "/settings/users",
+            "handler": "settings/users/store",
+            "Description": "Create a new user",
+            "label": "Create User",
+            "permission": "users:store"
+        },
+        {
+            "method": "PUT",
+            "url": "/settings/users/:id",
+            "handler": "settings/users/update",
+            "Description": "Update an existing user",
+            "label": "Update User",
+            "permission": "users:update"
+        },
+        {
+            "method": "DELETE",
+            "url": "/settings/users/:id",
+            "handler": "settings/users/destroy",
+            "Description": "Delete a user",
+            "label": "Delete User",
+            "permission": "users:destroy"
+        }
+    ],
+    "utility_routes": [
+        {
+            "method": "GET",
+            "url": "/routes",
+            "handler": "routes/index",
+            "Description": "List all accessible routes for the logged-in user",
+            "label": "Available Routes",
+            "permission": "routes:index"
+        }
+    ]
+}

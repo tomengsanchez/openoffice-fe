@@ -1,0 +1,9 @@
+# Composer dependencies
+/vendor/
+
+# Log files
+error.log
+
+# IDE specific folders
+.vscode/
+.idea/

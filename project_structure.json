@@ -1,0 +1,10 @@
+{
+    "type":"Backend API",
+    "description":"OpenOffice API",
+    "language":"PHP",
+    "framework":"Vanilla PHP",
+    "database":"MySQL",
+    "version":"1.0.0",
+    "author":"Michael Sanchez",
+    "license":"GNUGPL"
+}
