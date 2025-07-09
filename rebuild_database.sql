@@ -29,6 +29,8 @@ CREATE TABLE IF NOT EXISTS `users` (
     `username` VARCHAR(255) NOT NULL UNIQUE,
     `password` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL UNIQUE,
+    `firstname` VARCHAR(100) NULL,
+    `lastname` VARCHAR(100) NULL,
     `role_id` INT,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -116,10 +118,10 @@ INSERT IGNORE INTO `permissions` (`permission_name`, `permission_description`) V
 
 -- Insert default users
 -- Password for all users is 'changeme'
-INSERT INTO `users` (`username`, `password`, `email`, `role_id`) VALUES
-('admin', '$2y$10$o03M1IfNa5YvBeORxpkm3.vegq9JBzg5fzL20qjYRe/qTH8dbuMly', 'admin@example.com', (SELECT id FROM roles WHERE role_name = 'admin')),
-('manager', '$2y$10$o03M1IfNa5YvBeORxpkm3.vegq9JBzg5fzL20qjYRe/qTH8dbuMly', 'manager@example.com', (SELECT id FROM roles WHERE role_name = 'manager')),
-('employee', '$2y$10$o03M1IfNa5YvBeORxpkm3.vegq9JBzg5fzL20qjYRe/qTH8dbuMly', 'employee@example.com', (SELECT id FROM roles WHERE role_name = 'employee'));
+INSERT INTO `users` (`username`, `password`, `email`, `firstname`, `lastname`, `role_id`) VALUES
+('admin', '$2y$10$o03M1IfNa5YvBeORxpkm3.vegq9JBzg5fzL20qjYRe/qTH8dbuMly', 'admin@example.com', 'System', 'Administrator', (SELECT id FROM roles WHERE role_name = 'admin')),
+('manager', '$2y$10$o03M1IfNa5YvBeORxpkm3.vegq9JBzg5fzL20qjYRe/qTH8dbuMly', 'manager@example.com', 'Department', 'Manager', (SELECT id FROM roles WHERE role_name = 'manager')),
+('employee', '$2y$10$o03M1IfNa5YvBeORxpkm3.vegq9JBzg5fzL20qjYRe/qTH8dbuMly', 'employee@example.com', 'Regular', 'Employee', (SELECT id FROM roles WHERE role_name = 'employee'));
 
 -- Assign all permissions to the admin role
 INSERT INTO `role_permissions` (`role_id`, `permission_id`)
