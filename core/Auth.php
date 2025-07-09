@@ -174,11 +174,25 @@ class Auth {
 
                 $permission = $route['permission'] ?? null;
                 // Always include the route but add permission information
+                $permission_id = null;
+                if ($permission) {
+                    // Get permission ID from database
+                    $stmt = self::$smp->prepare("SELECT id FROM permissions WHERE permission_name = ?");
+                    $stmt->bind_param('s', $permission);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    if ($row = $result->fetch_assoc()) {
+                        $permission_id = (int)$row['id'];
+                    }
+                    $stmt->close();
+                }
+
                 $available_links[] = [
                     'method' => $route['method'],
                     'url' => $route['url'],
                     'label' => $route['label'],
                     'permission_required' => $permission,
+                    'permission_id' => $permission_id,
                     'has_permission' => self::can($permission)
                 ];
             }
