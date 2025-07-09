@@ -4,20 +4,18 @@ global $smp, $params;
 
 // The Auth class has already verified the user has the 'roles:destroy' permission.
 
-// Get the request body
-$data = json_decode(file_get_contents('php://input'), true);
+// Get role ID from URL parameter
+$role_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-// Validate required fields
-if (empty($data['id'])) {
+// Validate role ID
+if ($role_id <= 0) {
     http_response_code(400);
     echo json_encode([
         'status' => 'error',
-        'message' => 'Role ID is required.'
+        'message' => 'Invalid role ID.'
     ]);
     exit;
 }
-
-$role_id = (int)$data['id'];
 
 // Check if role exists
 $stmt = $smp->prepare("SELECT id, role_name FROM roles WHERE id = ?");

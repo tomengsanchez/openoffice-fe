@@ -191,8 +191,17 @@
             "permission": "roles:store"
         },
         {
+            "method": "GET",
+            "url": "/settings/roles/:id",
+            "handler": "settings/roles/show",
+            "Description": "Show Role with Permissions",
+            "label": "Show Role",
+            "content": "view a role and its assigned permissions",
+            "permission": "roles:show"
+        },
+        {
             "method": "PUT",
-            "url": "/settings/roles",
+            "url": "/settings/roles/:id",
             "handler": "settings/roles/update",
             "Description": "Update Roles and Permissions",
             "label": "Update Roles and Permissions",
@@ -201,7 +210,7 @@
         },
         {
             "method": "DELETE",
-            "url": "/settings/roles",
+            "url": "/settings/roles/:id",
             "handler": "settings/roles/destroy",
             "Description": "Destroy Roles and Permissions",
             "label": "Destroy Roles and Permissions",

@@ -85,7 +85,8 @@ INSERT INTO `permissions` (`permission_name`, `permission_description`) VALUES
 ('users:update', 'Ability to update an existing user'),
 ('users:destroy', 'Ability to delete a user'),
 ('routes:index', 'Ability to view available routes'),
-('permissions:show', 'Ability to view a single permission');
+('permissions:show', 'Ability to view a single permission'),
+('roles:show', 'Ability to view a single role with its permissions');
 
 -- Insert default users
 -- Password for all users is 'changeme'
