@@ -8,7 +8,7 @@ This directory contains comprehensive guides for frontend developers working wit
 - [Authentication Guide](./authentication.md) - User login, registration, and token management
 
 ### Users
-- [Users API Guide](./users.md) - User management endpoints
+- [User Management Guide](./users/user-management.md) - Complete guide to user management including CRUD operations
 
 ### Roles
 - [Roles API Guide](./roles.md) - Role management and assignment

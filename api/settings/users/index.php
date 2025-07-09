@@ -20,7 +20,7 @@ try {
     $searchable_fields = ['u.username', 'u.email', 'r.role_name'];
 
     // Define the base query for fetching users with their roles
-    $base_query = "SELECT u.id, u.username, u.email, r.role_name 
+    $base_query = "SELECT u.id, u.username, u.email, u.firstname, u.lastname, r.role_name 
                    FROM users u 
                    JOIN roles r ON u.role_id = r.id";
 

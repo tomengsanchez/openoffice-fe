@@ -187,6 +187,14 @@
             "label": "Delete Permission",
             "content": "delete a permission by ID",
             "permission": "permissions:destroy"
+        },
+        {
+            "method": "GET",
+            "url": "/settings/permissions/:id",
+            "handler": "settings/permissions/delete",
+            "Description": "Display Delete Permission Form",
+            "label": "Delete Permission",
+            "permission": "permissions:delete"
         }
     ],
     "roles_routes": [
@@ -251,6 +259,14 @@
             "Description": "Destroy Roles and Permissions",
             "label": "Destroy Roles and Permissions",
             "permission": "roles:destroy"
+        },
+        {
+            "method": "GET",
+            "url": "/settings/roles/:id",
+            "handler": "settings/roles/delete",
+            "Description": "Display Delete Role Form",
+            "label": "Delete Role",
+            "permission": "roles:delete"
         }
     ],
     "user_management_routes": [
@@ -311,6 +327,14 @@
             "Description": "Delete a user",
             "label": "Delete User",
             "permission": "users:destroy"
+        },
+        {
+            "method": "GET",
+            "url": "/settings/users/:id",
+            "handler": "settings/users/delete",
+            "Description": "Display Delete User Form",
+            "label": "Delete User",
+            "permission": "users:delete"
         }
     ],
     "utility_routes": [

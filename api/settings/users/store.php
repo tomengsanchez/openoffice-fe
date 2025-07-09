@@ -8,9 +8,13 @@ global $smp;
 $data = json_decode(file_get_contents('php://input'), true);
 
 // --- Input Validation ---
-if (empty($data['username']) || empty($data['email']) || empty($data['password']) || !isset($data['role_id'])) {
+if (empty($data['username']) || empty($data['email']) || empty($data['password']) || !isset($data['role_id']) || 
+    empty($data['firstname']) || empty($data['lastname'])) {
     http_response_code(400); // Bad Request
-    echo json_encode(['status' => 'error', 'message' => 'Missing required fields: username, email, password, and role_id are required.']);
+    echo json_encode([
+        'status' => 'error', 
+        'message' => 'Missing required fields: username, email, password, firstname, lastname and role_id are required.'
+    ]);
     exit;
 }
 
@@ -54,18 +58,29 @@ if ($stmt->get_result()->num_rows === 0) {
 // --- Create User ---
 try {
     // Hash the password
-    $hashed_password = password_hash($data['password'], PASSWORD_DEFAULT);
+    $hashedPassword = password_hash($data['password'], PASSWORD_DEFAULT);
 
-    // Prepare the SQL statement
-    $stmt = $smp->prepare("INSERT INTO users (username, email, password, role_id) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param('sssi', $data['username'], $data['email'], $hashed_password, $data['role_id']);
+    // Set default values if not provided
+    $firstname = trim($data['firstname']);
+    $lastname = trim($data['lastname']);
+
+    // Insert the new user
+    $stmt = $smp->prepare("INSERT INTO users (username, email, password, firstname, lastname, role_id) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssi', 
+        $data['username'], 
+        $data['email'], 
+        $hashedPassword, 
+        $firstname,
+        $lastname,
+        $data['role_id']
+    );
 
     // Execute the statement
     if ($stmt->execute()) {
         $new_user_id = $stmt->insert_id;
 
         // Fetch the newly created user to return in the response
-        $stmt_select = $smp->prepare("SELECT u.id, u.username, u.email, u.role_id, r.role_name, u.created_at, u.updated_at FROM users u JOIN roles r ON u.role_id = r.id WHERE u.id = ?");
+        $stmt_select = $smp->prepare("SELECT u.id, u.username, u.email, u.firstname, u.lastname, u.role_id, r.role_name, u.created_at, u.updated_at FROM users u JOIN roles r ON u.role_id = r.id WHERE u.id = ?");
         $stmt_select->bind_param('i', $new_user_id);
         $stmt_select->execute();
         $new_user = $stmt_select->get_result()->fetch_assoc();

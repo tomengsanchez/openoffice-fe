@@ -14,7 +14,7 @@ if ($user_id <= 0) {
 
 // --- Fetch User ---
 try {
-    $stmt = $smp->prepare("SELECT u.id, u.username, u.email, u.role_id, r.role_name, u.created_at, u.updated_at 
+    $stmt = $smp->prepare("SELECT u.id, u.username, u.email, u.firstname, u.lastname, u.role_id, r.role_name, u.created_at, u.updated_at 
                            FROM users u 
                            JOIN roles r ON u.role_id = r.id 
                            WHERE u.id = ?");

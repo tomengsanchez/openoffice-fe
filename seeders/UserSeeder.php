@@ -66,8 +66,8 @@ try {
     // Truncate users table (be careful with this in production!)
     // $smp->query("TRUNCATE TABLE users");
     
-    // Prepare the insert statement
-    $stmt = $smp->prepare("INSERT INTO users (username, password, email, role_id, created_at, updated_at) VALUES (?, ?, ?, ?, NOW(), NOW())");
+    // Prepare the insert statement with firstname and lastname
+    $stmt = $smp->prepare("INSERT INTO users (username, password, email, firstname, lastname, role_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW())");
     
     // Start transaction for better performance
     $smp->begin_transaction();
@@ -92,7 +92,7 @@ try {
         $roleId = rand(1, 3); // Random role between 1 and 3
         
         // Bind parameters and execute
-        $stmt->bind_param('sssi', $username, $password, $email, $roleId);
+        $stmt->bind_param('sssssi', $username, $password, $email, $firstName, $lastName, $roleId);
         
         if (!$stmt->execute()) {
             echo "Error inserting user $i: " . $stmt->error . "\n";
