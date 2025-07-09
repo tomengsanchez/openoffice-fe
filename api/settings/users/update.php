@@ -5,12 +5,12 @@ global $smp, $params;
 // The Auth class has already verified the user has the 'users:update' permission.
 
 // --- Input Validation ---
-if (!isset($params['id']) || !ctype_digit((string)$params['id'])) {
+$user_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+if ($user_id <= 0) {
     http_response_code(400); // Bad Request
     echo json_encode(['status' => 'error', 'message' => 'A valid user ID is required.']);
     exit;
 }
-$user_id = (int)$params['id'];
 
 // Get the raw PUT data
 $data = json_decode(file_get_contents('php://input'), true);
