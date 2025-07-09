@@ -173,13 +173,14 @@ class Auth {
                 }
 
                 $permission = $route['permission'] ?? null;
-                if (self::can($permission)) {
-                    $available_links[] = [
-                        'method' => $route['method'],
-                        'url' => $route['url'],
-                        'label' => $route['label']
-                    ];
-                }
+                // Always include the route but add permission information
+                $available_links[] = [
+                    'method' => $route['method'],
+                    'url' => $route['url'],
+                    'label' => $route['label'],
+                    'permission_required' => $permission,
+                    'has_permission' => self::can($permission)
+                ];
             }
         }
 
