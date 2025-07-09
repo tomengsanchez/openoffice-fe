@@ -136,6 +136,15 @@
         },
         {
             "method": "GET",
+            "url": "/settings/permissions/create",
+            "handler": "settings/permissions/create",
+            "Description": "Display Create Permission Form",
+            "label": "Create Permission",
+            "content": "display a form to create a new permission",
+            "permission": "permissions:create"
+        },
+        {
+            "method": "GET",
             "url": "/settings/permissions/:id",
             "handler": "settings/permissions/show",
             "Description": "Show Permission",
@@ -151,6 +160,15 @@
             "label": "Store Permissions",
             "content": "store a new permission",
             "permission": "permissions:store"
+        },
+        {
+            "method": "GET",
+            "url": "/settings/permissions/:id",
+            "handler": "settings/permissions/edit",
+            "Description": "Display Edit Permission Form",
+            "label": "Edit Permission",
+            "content": "display a form to edit a permission",
+            "permission": "permissions:edit"
         },
         {
             "method": "PUT",
@@ -182,6 +200,15 @@
             "permission": "roles:index"
         },
         {
+            "method": "GET",
+            "url": "/settings/roles/create",
+            "handler": "settings/roles/create",
+            "Description": "Display Create Role Form",
+            "label": "Create Role",
+            "content": "display a form to create a new role",
+            "permission": "roles:create"
+        },
+        {
             "method": "POST",
             "url": "/settings/roles",
             "handler": "settings/roles/store",
@@ -198,6 +225,15 @@
             "label": "Show Role",
             "content": "view a role and its assigned permissions",
             "permission": "roles:show"
+        },
+        {
+            "method": "GET",
+            "url": "/settings/roles/:id",
+            "handler": "settings/roles/edit",
+            "Description": "Display Edit Role Form",
+            "label": "Edit Role",
+            "content": "display a form to edit a role",
+            "permission": "roles:edit"
         },
         {
             "method": "PUT",
@@ -228,6 +264,15 @@
         },
         {
             "method": "GET",
+            "url": "/settings/users/create",
+            "handler": "settings/users/create",
+            "Description": "Display Create User Form",
+            "label": "Create User",
+            "content": "display a form to create a new user",
+            "permission": "users:create"
+        },
+        {
+            "method": "GET",
             "url": "/settings/users/:id",
             "handler": "settings/users/show",
             "Description": "Get a single user by ID",
@@ -241,6 +286,15 @@
             "Description": "Create a new user",
             "label": "Create User",
             "permission": "users:store"
+        },
+        {
+            "method": "GET",
+            "url": "/settings/users/:id",
+            "handler": "settings/users/edit",
+            "Description": "Display Edit User Form",
+            "label": "Edit User",
+            "content": "display a form to edit a user",
+            "permission": "users:edit"
         },
         {
             "method": "PUT",

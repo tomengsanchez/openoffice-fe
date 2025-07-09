@@ -53,7 +53,8 @@ INSERT INTO `roles` (`role_name`, `role_description`) VALUES
 ('employee', 'Employee role with basic permissions');
 
 -- Insert permissions generated from routes.json
-INSERT INTO `permissions` (`permission_name`, `permission_description`) VALUES
+INSERT IGNORE INTO `permissions` (`permission_name`, `permission_description`) VALUES
+-- Authentication
 ('index', 'Access to the index route'),
 ('auth:login', 'Ability to log in'),
 ('auth:register', 'Ability to register a new account'),
@@ -61,32 +62,57 @@ INSERT INTO `permissions` (`permission_name`, `permission_description`) VALUES
 ('auth:forgotPassword', 'Ability to use the forgot password feature'),
 ('auth:resetPassword', 'Ability to reset a password'),
 ('auth:changePassword', 'Ability to change a password'),
+
+-- User profile
 ('user:index', 'Ability to view user profile'),
 ('user:update', 'Ability to update user profile'),
 ('user:destroy', 'Ability to delete a user account'),
-('dashboard:index', 'Ability to view the dashboard'),
+
+-- Dashboard
+('dashboard:index', 'Access to the dashboard interface'),
+
+-- Settings
 ('settings:index', 'Ability to view settings'),
+
+-- Permissions
 ('permissions:index', 'Ability to view permissions'),
-('permissions:store', 'Ability to create permissions'),
+('permissions:show', 'Ability to view a single permission'),
+('permissions:create', 'Ability to create new permissions'),
+('permissions:store', 'Ability to store new permissions'),
+('permissions:edit', 'Ability to modify existing permissions'),
 ('permissions:update', 'Ability to update permissions'),
+('permissions:delete', 'Ability to remove permissions'),
 ('permissions:destroy', 'Ability to delete permissions'),
-('roles:index', 'Ability to view roles'),
-('roles:store', 'Ability to create roles'),
+
+-- Roles
+('roles:index', 'Ability to view roles list'),
+('roles:show', 'Ability to view a single role with its permissions'),
+('roles:create', 'Ability to create new roles'),
+('roles:store', 'Ability to store new roles'),
+('roles:edit', 'Ability to modify existing roles'),
 ('roles:update', 'Ability to update roles'),
+('roles:delete', 'Ability to remove roles'),
 ('roles:destroy', 'Ability to delete roles'),
-('users:index', 'Ability to list and manage users'),
+
+-- Users
+('users:index', 'Ability to view users list'),
+('users:show', 'Ability to view a single user'),
+('users:create', 'Ability to create new users'),
+('users:store', 'Ability to store new users'),
+('users:edit', 'Ability to modify existing users'),
+('users:update', 'Ability to update users'),
+('users:delete', 'Ability to remove users'),
+('users:destroy', 'Ability to delete users'),
+
+-- IT Service Requests
 ('ItServiceRequest:index', 'Can list IT Service Request List'),
 ('ItServiceRequest:store', 'Can Create IT Service Request List'),
 ('ItServiceRequest:update', 'Can Edit IT Service Request List'),
 ('ItServiceRequest:destroy', 'Can Delete IT Service Request List'),
 ('ItServiceRequest:change_status', 'Can Change IT Service Request List Status'),
-('users:show', 'Ability to view a single user'),
-('users:store', 'Ability to create a new user'),
-('users:update', 'Ability to update an existing user'),
-('users:destroy', 'Ability to delete a user'),
-('routes:index', 'Ability to view available routes'),
-('permissions:show', 'Ability to view a single permission'),
-('roles:show', 'Ability to view a single role with its permissions');
+
+-- System
+('routes:index', 'Ability to view available routes');
 
 -- Insert default users
 -- Password for all users is 'changeme'
