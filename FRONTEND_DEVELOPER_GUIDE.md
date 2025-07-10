@@ -6,6 +6,11 @@
 3. [API Base URL](#api-base-url)
 4. [Making Requests](#making-requests)
 5. [Available Endpoints](#available-endpoints)
+   - [Authentication](#authentication-endpoints)
+   - [User Management](#user-management)
+   - [Role Management](#role-management)
+   - [Permission Management](#permission-management)
+   - [Service Requests](#service-requests)
 6. [Pagination, Sorting & Filtering](#pagination-sorting--filtering)
 7. [Error Handling](#error-handling)
 8. [Development Setup](#development-setup)
@@ -86,17 +91,10 @@ All API responses follow this format:
 
 ## Available Endpoints
 
-### Authentication
-- `POST /login` - Authenticate user
-- `POST /register` - Register new user (if enabled)
-- `POST /logout` - Invalidate token
-- `POST /forgot-password` - Request password reset
-- `POST /reset-password` - Reset password with token
-- `POST /change-password` - Change password (authenticated)
+### Authentication Endpoints
 
-### User Management (Admin)
-- `GET /settings/users` - List users (paginated)
-- `POST /settings/users` - Create new user
+#### `POST /login`
+Authenticate and receive JWT token.
 - `GET /settings/users/{id}` - Get user details
 - `PUT /settings/users/{id}` - Update user
 - `DELETE /settings/users/{id}` - Delete user
@@ -399,6 +397,48 @@ GET /settings/users?search=john
 ```
 
 ## Error Handling
+
+The API uses standard HTTP status codes and provides detailed error messages in the response body.
+
+### Common Status Codes
+- `200 OK` - Request successful
+- `201 Created` - Resource created successfully
+- `204 No Content` - Resource deleted successfully
+- `400 Bad Request` - Invalid request parameters
+- `401 Unauthorized` - Authentication required
+- `403 Forbidden` - Insufficient permissions
+- `404 Not Found` - Resource not found
+- `422 Unprocessable Entity` - Validation errors
+- `500 Internal Server Error` - Server error
+
+### Error Response Format
+```json
+{
+    "status": "error",
+    "message": "Error description",
+    "errors": {
+        "field_name": ["Error message"]
+    }
+}
+```
+
+### Handling JWT Tokens
+1. Include the JWT in the `Authorization` header for authenticated requests:
+   ```
+   Authorization: Bearer your.jwt.token.here
+   ```
+2. Handle token expiration (401 status code) by:
+   - Prompting the user to log in again
+   - Storing refresh tokens if implemented
+   - Implementing token refresh logic
+
+## Rate Limiting
+- 60 requests per minute per IP address
+- 1000 requests per day per user
+- Headers are returned with rate limit information:
+  - `X-RateLimit-Limit`: Maximum requests allowed
+  - `X-RateLimit-Remaining`: Remaining requests
+  - `X-RateLimit-Reset`: Timestamp when the limit resets
 
 ### Common Error Responses
 
