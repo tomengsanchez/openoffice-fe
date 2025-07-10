@@ -337,6 +337,25 @@
             "permission": "users:delete"
         }
     ],
+    "email_notification_routes":[
+        {
+            "method": "GET",
+            "url": "settings/email-notification-settings",
+            "handler": "settings/email-notification-settings/index",
+            "Description": "List all email notifications Options - this will just list the options via json and can be appended",
+            "label": "Email Notifications",
+            "permission": "email-notification-settings:index"
+        },
+        { 
+            "method": "PUT",
+            "url": "settings/email-notification-settings",
+            "handler": "settings/email-notification-settings/update",
+            "Description": "Update email notifications Options - will add a json format each time we update, it will append another entry on the json",
+            "label": "Email Notifications",
+            "permission": "email-notification-settings:update"
+        }
+            
+    ],
     "utility_routes": [
         {
             "method": "GET",
@@ -345,6 +364,80 @@
             "Description": "List all accessible routes for the logged-in user",
             "label": "Available Routes",
             "permission": "routes:index"
+        }
+    ],
+    "it_service_request_routes": [
+        {
+            "method": "GET",
+            "url": "/it/service-requests",
+            "handler": "it/it-service-requests/index",
+            "Description": "List all service requests",
+            "label": "Service Requests",
+            "permission": "it-service-requests:index"
+        },
+        {
+            "method": "GET",
+            "url": "/it/service-requests/create",
+            "handler": "it/it-service-requests/create",
+            "Description": "Display Create Service Request Form",
+            "label": "Create Service Request",
+            "permission": "it-service-requests:create"
+        },
+        {
+            "method": "POST",
+            "url": "/it/service-requests",
+            "handler": "it/it-service-requests/store",
+            "Description": "Store a new service request",
+            "label": "Store Service Request",
+            "permission": "it-service-requests:store"
+        },
+        {
+            "method": "PUT",
+            "url": "/it/service-requests/:id",
+            "handler": "it/it-service-requests/change-status",
+            "Description": "Change Service Request Status",
+            "label": "Change Service Request Status",
+            "permission": "it-service-requests:change-status"
+        },
+        {
+            "method": "GET",
+            "url": "/it/service-requests/:id",
+            "handler": "it/it-service-requests/show",
+            "Description": "Display a single service request",
+            "label": "Show Service Request",
+            "permission": "it-service-requests:show"
+        },
+        {
+            "method": "GET",
+            "url": "/it/service-requests/:id/edit",
+            "handler": "it/it-service-requests/edit",
+            "Description": "Display Edit Service Request Form",
+            "label": "Edit Service Request",
+            "permission": "it-service-requests:edit"
+        },
+        {
+            "method": "PUT",
+            "url": "/it/service-requests/:id",
+            "handler": "it/it-service-requests/update",
+            "Description": "Update an existing service request",
+            "label": "Update Service Request",
+            "permission": "it-service-requests:update"
+        },
+        {
+            "method": "DELETE",
+            "url": "/it/service-requests/:id",
+            "handler": "it/it-service-requests/destroy",
+            "Description": "Delete a service request",
+            "label": "Delete Service Request",
+            "permission": "it-service-requests:destroy"
+        },
+        {
+            "method": "GET",
+            "url": "/it/service-requests/:id",
+            "handler": "it/it-service-requests/delete",
+            "Description": "Display Delete Service Request Form",
+            "label": "Delete Service Request",
+            "permission": "it-service-requests:delete"
         }
     ]
 }
